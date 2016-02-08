@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="DiceInvaders.View.GameObjectView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                     mc:Ignorable="d"
+             Loaded="UserControl_Loaded">
+    <Canvas Background="Black" Height="715" Width="855">
+        
+            <Label FontFamily="Verdana"  FontSize="20" Content ="Score:" Foreground="GreenYellow"></Label>
+            <Label FontFamily="Verdana" FontSize="20" Content ="{Binding Score}" Foreground="GreenYellow" Canvas.Left="75"></Label>
+        <Label FontFamily="Verdana" FontSize="20" Content ="Life: " Foreground="#F621DB" Canvas.Right="40"/>
+        <Label FontFamily="Verdana" FontSize="20" Content="{Binding Life}" Foreground="#F621DB" Canvas.Right="20"/>
+        <Label FontSize="40" Content="{Binding GameInformation}" Visibility="Visible" Foreground="#90A3F1" Canvas.Left="200" Canvas.Bottom="450"/>
+
+        <ItemsControl ItemsSource="{Binding AllGameObjects}">
+            <ItemsControl.Resources>
+                <Style TargetType="ContentPresenter">
+                    <Setter Property="Canvas.Left" Value="{Binding Left}" />
+                    <Setter Property="Canvas.Top" Value="{Binding Top}" />
+                </Style>
+                <Style TargetType="HeaderedItemsControl">
+                </Style>
+            </ItemsControl.Resources>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <Canvas />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Image Source="{Binding Sprite}" />
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+       
+
+    </Canvas>
+ 
+
+</UserControl>
